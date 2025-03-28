@@ -121,7 +121,25 @@ const DscaInventoryView: React.FC<IDscaInventoryViewProps> = (props) => {
         }
       }
     }
-    return eol?.date || null;
+  
+    if (eol?.date) {
+      // Convert the EOL date to the required format
+      const eolDate = new Date(eol.date);
+      
+      // Format as YYYY-MM-DDThh:mm:ss
+      // Replace padStart with manual string formatting for month and day
+      const year = eolDate.getFullYear();
+      const monthNum = eolDate.getMonth() + 1;
+      const dayNum = eolDate.getDate();
+
+      // Manual zero-padding using conditional logic
+      const month = monthNum < 10 ? '0' + monthNum : '' + monthNum;
+      const day = dayNum < 10 ? '0' + dayNum : '' + dayNum;
+
+      return `${year}-${month}-${day}T12:00:00`;
+    }
+    
+    return null;
   }
 
   const handleSaveAsset = async (updatedAsset: IAsset): Promise<void> => {
@@ -298,7 +316,7 @@ const DscaInventoryView: React.FC<IDscaInventoryViewProps> = (props) => {
   //  }
   //};
 
-  const handleCancelTimelineEdit = (): void => {
+  const handleCloseTimelineEdit = (): void => {
     setIsTimelineEditMode(false);
   };
   
@@ -414,7 +432,7 @@ const DscaInventoryView: React.FC<IDscaInventoryViewProps> = (props) => {
                   assetId={selectedAsset?.asset.assetId || ''}
                   timelineItemId={selectedTimelineItemId}
                   onSave={handleSaveAsset}
-                  onCancel={handleCancelTimelineEdit}
+                  onClose={handleCloseTimelineEdit}
                   inventoryData={inventoryData}
                 />
               ) : (

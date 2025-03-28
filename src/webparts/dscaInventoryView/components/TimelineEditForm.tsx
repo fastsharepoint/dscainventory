@@ -8,11 +8,11 @@ interface ITimelineEditFormProps {
   assetId: string;
   timelineItemId?: string; // Optional - if provided, we're editing an existing item
   onSave: (asset: IAsset) => void;
-  onCancel: () => void;
+  onClose: () => void;
   inventoryData: { assets: IAsset[] }; // Pass mock data as prop for testing
 }
 
-const TimelineEditForm: React.FC<ITimelineEditFormProps> = ({ assetId, timelineItemId, onSave, onCancel, inventoryData }) => {
+const TimelineEditForm: React.FC<ITimelineEditFormProps> = ({ assetId, timelineItemId, onSave, onClose, inventoryData }) => {
   const [asset, setAsset] = useState<IAsset | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
@@ -261,6 +261,7 @@ const TimelineEditForm: React.FC<ITimelineEditFormProps> = ({ assetId, timelineI
     
     // Pass the updated asset back to parent
     onSave(updatedAsset);
+    onClose();
   };
 
   // Show loading state
@@ -281,10 +282,10 @@ const TimelineEditForm: React.FC<ITimelineEditFormProps> = ({ assetId, timelineI
         <div className={styles.formActions}>
           <button 
             className={styles.cancelButton} 
-            onClick={onCancel}
+            onClick={onClose}
             type="button"
           >
-            Cancel
+            Close
           </button>
           <button 
             className={styles.saveButton} 
@@ -389,47 +390,6 @@ const TimelineEditForm: React.FC<ITimelineEditFormProps> = ({ assetId, timelineI
                 placeholder="Additional details about the event"
               />
             </div>
-            
-            {timelineItem.eventType === 'end-of-life' && (
-              <>
-                <div className={styles.formGroup}>
-                  <label htmlFor="product">Product</label>
-                  <select
-                    id="product"
-                    name="product"
-                    value={selectedProduct}
-                    onChange={handleProductChange}
-                    className={styles.formControl}
-                  >
-                    <option value="">Select a product</option>
-                    {products.map((product, index) => (
-                      <option key={index} value={product}>{product}</option>
-                    ))}
-                  </select>
-                  {isProductsLoading && <div>Loading products...</div>}
-                  {apiError && <div className={styles.errorMessage}>{apiError}</div>}
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="version">Version</label>
-                  <select
-                    id="version"
-                    name="version"
-                    value={selectedVersion}
-                    onChange={handleVersionChange}
-                    className={styles.formControl}
-                    disabled={!selectedProduct}
-                  >
-                    <option value="">Select a version</option>
-                    {versions.map((version, index) => (
-                      <option key={index} value={version.cycle}>{version.cycle}</option>
-                    ))}
-                  </select>
-                  {isVersionsLoading && <div>Loading versions...</div>}
-                  {apiError && <div className={styles.errorMessage}>{apiError}</div>}
-                </div>
-              </>
-            )}
             
             {timelineItem.eventType === 'end-of-life' && (
               <div className={`${styles.formGroup} ${styles.fullWidth}`}>
