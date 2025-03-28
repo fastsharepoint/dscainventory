@@ -26,7 +26,7 @@ A SharePoint list named **FSInventory** is provisioned as part of this solution.
 
 ## Prerequisites
 
-> Any special pre-requisites?
+**Node.js v18.19.0**
 
 ## Solution
 | Solution    | Author(s)                                               |
