@@ -1,8 +1,15 @@
 # dsca-inventory
 
 ## Summary
+This solution provides inventory management for IT assets, including lifecycle tracking through timeline items and integration with an End of Life API to ensure efficient asset management and planning and built using **React** and **TypeScript**, leveraging modern web development practices to ensure a robust and maintainable codebase.
 
-Short summary on functionality and used technologies.
+## Node.js Version
+
+This solution uses **Node.js v18.19.0**. Ensure you have this version installed before proceeding.
+
+## Provisioned SharePoint List
+
+A SharePoint list named **FSInventory** is provisioned as part of this solution. Ensure the list is properly set up for the solution to function as expected. dsca-inventory
 
 [picture of the solution in action, if possible]
 
@@ -22,10 +29,10 @@ Short summary on functionality and used technologies.
 > Any special pre-requisites?
 
 ## Solution
-
 | Solution    | Author(s)                                               |
 | ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
+| folder name | Chris Gomez (chris@fastsharepoint.com)                  |
+
 
 ## Version history
 
@@ -56,9 +63,9 @@ Description of the extension that expands upon high-level summary above.
 
 This extension illustrates the following concepts:
 
-- topic 1
-- topic 2
-- topic 3
+- CRUD opertions on a SharePoint list
+- End of Life API integration
+- Modern UI
 
 > Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
 
