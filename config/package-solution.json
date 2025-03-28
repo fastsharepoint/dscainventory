@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "dsca-inventory-client-side-solution",
+    "id": "8412b0f3-52f9-4f4e-b61e-4e760734606e",
+    "version": "1.0.0.9",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "DSCA Inventory"
+      },
+      "longDescription": {
+        "default": "DSCA Inventory is a solution for managing and tracking inventory within the DSCA framework."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "dsca-inventory Feature",
+        "description": "The feature that activates elements of the dsca-inventory solution.",
+        "id": "809f6d93-a068-4cd1-a283-802238194683",
+        "version": "1.0.0.0",
+        "assets": {
+        "elementManifests": [
+          "elements.xml"
+        ],
+        "elementFiles":[
+          "schema.xml"
+        ]
+      }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/dsca-inventory.sppkg"
+  }
+}

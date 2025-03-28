@@ -1,0 +1,624 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.dscaInventoryView {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+// Main container styles
+.container {
+  margin: 0px auto;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+// Filter section styles
+.filterContainer {
+  padding: 16px 24px;
+  background-color: #f9f9f8;
+  border-bottom: 1px solid #edebe9;
+  display: flex;
+  align-items: center;
+  
+  label {
+    margin-right: 12px;
+    font-weight: 600;
+    color: #323130;
+  }
+}
+
+// Filter dropdown styles
+.manufacturerFilter {
+  min-width: 200px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #8a8886;
+  border-radius: 2px;
+  background-color: #ffffff;
+  color: #323130;
+  font-size: 14px;
+  
+  &:focus {
+    border-color: #0078d4;
+    outline: none;
+  }
+  
+  &:hover {
+    border-color: #323130;
+  }
+}
+
+// Table container for horizontal scrolling
+.tableContainer {
+  overflow-x: auto;
+  padding: 0;
+}
+
+// Asset table styles
+.assetsTable {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #edebe9;
+    font-size: 14px;
+  }
+  
+  th {
+    background-color: #f3f2f1;
+    font-weight: 600;
+    color: #323130;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  tr {
+    &:hover {
+      background-color: #f3f2f1;
+    }
+    
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+  
+  td {
+    color: #605e5c;
+    
+    &:first-child {
+      text-align: center;
+    }
+  }
+}
+
+// Clickable rows
+.clickableRow {
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  
+  &:hover {
+    background-color: #f3f2f1;
+  }
+}
+
+// Modal styles
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modalContainer {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 25.6px 57.6px rgba(0, 0, 0, 0.22);
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease;
+  overflow: scroll;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #edebe9;
+  
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #323130;
+  }
+  
+  .closeButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #605e5c;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    
+    &:hover {
+      background-color: #f3f2f1;
+      color: #201f1e;
+    }
+  }
+}
+
+.modalHeaderButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.editButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #605e5c;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  
+  &:hover {
+    background-color: #f3f2f1;
+    color: #0078d4;
+  }
+}
+
+.modalContent {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// Asset details styling
+.assetSection {
+  background-color: #faf9f8;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 1.6px 3.6px rgba(0, 0, 0, 0.1);
+}
+
+.assetSectionHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #323130;
+  }
+  
+  .assetTypeIcon {
+    margin-right: 12px;
+  }
+}
+
+.assetInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoLabel {
+  font-size: 12px;
+  color: #605e5c;
+  margin-bottom: 4px;
+}
+
+.infoValue {
+  font-size: 14px;
+  color: #323130;
+  font-weight: 500;
+}
+
+// Timeline styling
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timelineEvent {
+  display: flex;
+  gap: 12px;
+}
+
+.timelineIconContainer {
+  width: 40px;
+  height: 40px;
+  background-color: #f3f2f1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.timelineContent {
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 12px;
+  border-left: 4px solid #0078d4;
+  flex-grow: 1;
+  box-shadow: 0 1.6px 3.6px rgba(0, 0, 0, 0.1);
+}
+
+.timelineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.timelineDate {
+  font-weight: 600;
+  color: #323130;
+}
+
+.timelineEventType {
+  background-color: #e1dfdd;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.eventTypepurchase { background-color: #d0f0fd; color: #006f94; }
+.eventTypedeployment { background-color: #d8f6dc; color: #107c10; }
+.eventTypemaintenance { background-color: #f9e9d2; color: #8a6d3b; }
+.eventTypeupgrade { background-color: #dfd8fd; color: #5c2e91; }
+.eventTyperenewal { background-color: #d2f5d2; color: #107c10; }
+.eventTypeend-of-life { background-color: #fdd8d6; color: #d13438; }
+.eventTypedisposal { background-color: #e6e6e6; color: #605e5c; }
+.eventTypeother { background-color: #e1dfdd; color: #323130; }
+
+.timelineDescription {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #323130;
+}
+
+.timelineDetails {
+  font-size: 12px;
+  color: #605e5c;
+  display: flex;
+  gap: 16px;
+}
+
+.timelineCost {
+  font-weight: 500;
+}
+
+.timelineNotes, .timelineAttachments {
+  font-size: 12px;
+  color: #605e5c;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #edebe9;
+}
+
+.notesLabel, .attachmentsLabel {
+  font-weight: 600;
+}
+
+.attachmentLinks {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.attachmentLink {
+  color: #0078d4;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Status colors
+.statusActive {
+  color: #107c10;
+}
+
+.statusInactive {
+  color: #605e5c;
+}
+
+.statusMaintenance {
+  color: #ca5010;
+}
+
+.statusRetired {
+  color: #797775;
+}
+
+.statusDisposed {
+  color: #d13438;
+}
+
+// Icon styles
+.hardwareIcon, .softwareIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Timeline icon styles
+.iconPurchase, 
+.iconDeployment, 
+.iconMaintenance, 
+.iconUpgrade, 
+.iconRenewal, 
+.iconEndOfLife, 
+.iconDisposal, 
+.iconOther {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+// Timeline event type styles
+.timelineEventType {
+  background-color: #e1dfdd;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+// Event type specific styles
+.eventTypepurchase { 
+  background-color: #d0f0fd; 
+  color: #006f94; 
+}
+
+.eventTypedeployment { 
+  background-color: #d8f6dc; 
+  color: #107c10; 
+}
+
+.eventTypemaintenance { 
+  background-color: #f9e9d2; 
+  color: #8a6d3b; 
+}
+
+.eventTypeupgrade { 
+  background-color: #dfd8fd; 
+  color: #5c2e91; 
+}
+
+.eventTyperenewal { 
+  background-color: #d2f5d2; 
+  color: #107c10; 
+}
+
+.eventTypeend-of-life { 
+  background-color: #fdd8d6; 
+  color: #d13438; 
+}
+
+.eventTypedisposal { 
+  background-color: #e6e6e6; 
+  color: #605e5c; 
+}
+
+.eventTypeother { 
+  background-color: #e1dfdd; 
+  color: #323130; 
+}
+
+// Timeline details styles
+.timelineCost {
+  font-weight: 500;
+}
+
+.timelineNotes, .timelineAttachments {
+  font-size: 12px;
+  color: #605e5c;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #edebe9;
+}
+
+.notesLabel, .attachmentsLabel {
+  font-weight: 600;
+}
+
+.assetSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  
+  h3 {
+    margin: 0;
+  }
+}
+
+.addTimelineButton {
+  padding: 6px 12px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #106ebe;
+  }
+}
+
+.timelineEvent {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #f3f2f1;
+    
+    .timelineIconContainer {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Add to DscaInventoryView.module.scss
+
+.addButton {
+  padding: 6px 12px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  &:hover {
+    background-color: #106ebe;
+  }
+  
+  &:active {
+    background-color: #005a9e;
+  }
+}
+
+.assetSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.timelineEvent {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #f3f2f1;
+    
+    .timelineIconContainer {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filterSection {
+  display: flex;
+  align-items: center;
+}
+
+.actionSection {
+  display: flex;
+}
+
+.addButton {
+  padding: 8px 16px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  &:hover {
+    background-color: #106ebe;
+  }
+  
+  &:active {
+    background-color: #005a9e;
+  }
+}

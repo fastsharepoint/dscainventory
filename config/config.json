@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dsca-inventory-view-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dscaInventoryView/DscaInventoryViewWebPart.js",
+          "manifest": "./src/webparts/dscaInventoryView/DscaInventoryViewWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DscaInventoryViewWebPartStrings": "lib/webparts/dscaInventoryView/loc/{locale}.js"
+  }
+}

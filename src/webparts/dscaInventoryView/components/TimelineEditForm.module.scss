@@ -1,0 +1,274 @@
+.formContainer {
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.formHeader {
+  padding: 20px 24px;
+  border-bottom: 1px solid #edebe9;
+  
+  h2 {
+    margin: 0 0 4px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #323130;
+  }
+  
+  h3 {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #605e5c;
+  }
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancelButton, .saveButton, .addButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.cancelButton {
+  background-color: #f3f2f1;
+  color: #323130;
+  
+  &:hover {
+    background-color: #edebe9;
+  }
+}
+
+.saveButton, .addButton {
+  background-color: #0078d4;
+  color: #ffffff;
+  
+  &:hover {
+    background-color: #106ebe;
+  }
+}
+
+.form {
+  padding: 0 24px 24px;
+}
+
+.formSection {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #faf9f8;
+  border-radius: 4px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #605e5c;
+    margin-bottom: 4px;
+  }
+  
+  &.fullWidth {
+    grid-column: 1 / -1;
+  }
+}
+
+.formControl {
+  padding: 8px 10px;
+  border: 1px solid #8a8886;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #323130;
+  background-color: #ffffff;
+  height: 32px;
+  
+  &:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 1px #0078d4;
+  }
+  
+  &::placeholder {
+    color: #a19f9d;
+  }
+}
+
+textarea.formControl {
+  height: auto;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.errorMessage {
+  padding: 12px 24px;
+  background-color: #fed9cc;
+  color: #d83b01;
+  margin: 16px 24px 0;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
+.loading {
+  padding: 24px;
+  text-align: center;
+  font-size: 16px;
+  color: #605e5c;
+}
+
+.error {
+  padding: 24px;
+  text-align: center;
+  font-size: 16px;
+  color: #d13438;
+}
+
+.attachmentList {
+  margin-bottom: 16px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.attachmentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #f3f2f1;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  
+  span {
+    font-size: 13px;
+    color: #323130;
+    word-break: break-all;
+  }
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #605e5c;
+  font-size: 16px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: 8px;
+  
+  &:hover {
+    background-color: #e1dfdd;
+    color: #d13438;
+  }
+}
+
+.emptyAttachments {
+  padding: 12px;
+  text-align: center;
+  color: #a19f9d;
+  font-style: italic;
+  background-color: #f3f2f1;
+  border-radius: 2px;
+}
+
+.attachmentInput {
+  display: flex;
+  gap: 8px;
+  
+  input {
+    flex-grow: 1;
+  }
+}
+
+/* Required field indicator */
+label[for="eventType"]::after,
+label[for="date"]::after,
+label[for="performedBy"]::after,
+label[for="description"]::after {
+  content: " *";
+  color: #d13438;
+}
+
+.eolContainer {
+  background-color: #f9f9fb;
+  padding: 16px;
+  border-radius: 4px;
+  border-left: 3px solid #d13438;
+  margin-bottom: 16px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #d13438;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.eolGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  position: absolute;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 120, 212, 0.2);
+  border-top-color: #0078d4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.apiError {
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  background-color: #fed9cc;
+  color: #d83b01;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

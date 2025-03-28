@@ -1,0 +1,169 @@
+.formContainer {
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #edebe9;
+  
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #323130;
+  }
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+}
+
+.cancelButton, .saveButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.cancelButton {
+  background-color: #f3f2f1;
+  color: #323130;
+  
+  &:hover {
+    background-color: #edebe9;
+  }
+}
+
+.saveButton {
+  background-color: #0078d4;
+  color: #ffffff;
+  
+  &:hover {
+    background-color: #106ebe;
+  }
+}
+
+.form {
+  padding: 0 24px 24px;
+}
+
+.formSection {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #faf9f8;
+  border-radius: 4px;
+  
+  h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #323130;
+  }
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #605e5c;
+    margin-bottom: 4px;
+  }
+  
+  &.fullWidth {
+    grid-column: 1 / -1;
+  }
+}
+
+.formControl {
+  padding: 8px 10px;
+  border: 1px solid #8a8886;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #323130;
+  background-color: #ffffff;
+  height: 32px;
+  
+  &:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 1px #0078d4;
+  }
+  
+  &::placeholder {
+    color: #a19f9d;
+  }
+}
+
+textarea.formControl {
+  height: auto;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.errorMessage {
+  padding: 12px 24px;
+  background-color: #fed9cc;
+  color: #d83b01;
+  margin: 16px 24px 0;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
+/* Required field indicator */
+label[for]::after {
+  content: " *";
+  color: #d13438;
+}
+
+/* Not for every label */
+label[for="poNumber"]::after,
+label[for="assignedTo"]::after,
+label[for="location"]::after,
+label[for="tags"]::after,
+label[for="serialNumber"]::after,
+label[for="macAddress"]::after,
+label[for="ipAddress"]::after,
+label[for="warrantyExpirationDate"]::after,
+label[for="specificationsCpu"]::after,
+label[for="specificationsRam"]::after,
+label[for="specificationsStorage"]::after,
+label[for="specificationsOther"]::after,
+label[for="licenseType"]::after,
+label[for="licenseKey"]::after,
+label[for="version"]::after,
+label[for="supportExpirationDate"]::after,
+label[for="totalLicenses"]::after,
+label[for="usedLicenses"]::after,
+label[for="notes"]::after {
+  content: "";
+}

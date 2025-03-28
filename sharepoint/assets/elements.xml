@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <Field
+        AppendOnly="FALSE"
+        DisplayName="Asset"
+        Format="Dropdown"
+        IsolateStyles="FALSE"
+        Name="Asset"
+        RichText="FALSE"
+        RichTextMode="Compatible"
+        Title="Asset"
+        Type="Note"
+        ID="{5a4811dc-990f-4f45-8071-acb4741453cb}"
+        StaticName="Asset"
+        ColName="ntext2"
+        RowOrdinal="0"
+        />
+
+    <Field
+        DisplayName="End of Life"
+        FriendlyDisplayFormat="Disabled"
+        Format="DateTime"
+        Name="EndofLife"
+        Title="End of Life"
+        Type="DateTime"
+        ID="{f56b4445-2298-4fb0-aa20-35730d7a5908}"
+        StaticName="EndofLife"
+        ColName="datetime1"
+        RowOrdinal="0"
+        />    
+
+    <ContentType ID="0x01006EF552DF6825224384843E5159BE67AA00E194CA3376ABBB4899711A9EF8555AB7"
+        Name="Item"
+        Group="List Content Types"
+        Description="Create a new list item.">
+        <FieldRefs>
+            <FieldRef ID="5a4811dc-990f-4f45-8071-acb4741453cb" />
+            <FieldRef ID="f56b4445-2298-4fb0-aa20-35730d7a5908" />
+        </FieldRefs>
+    </ContentType>
+
+    <ListInstance
+        CustomSchema="schema.xml"
+        FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+        Title="FSInventory"
+        Description=""
+        TemplateType="100"
+        Url="Lists/FSInventory">
+    </ListInstance>
+
+</Elements>
