@@ -3,15 +3,18 @@
 ## Summary
 This solution provides inventory management for IT assets, including lifecycle tracking through timeline items and integration with an End of Life API to ensure efficient asset management and planning and built using **React** and **TypeScript**, leveraging modern web development practices to ensure a robust and maintainable codebase.
 
-## Node.js Version
-
-This solution uses **Node.js v18.19.0**. Ensure you have this version installed before proceeding.
+## Web Parts
+Two web parts are provisioned as part of the solution, DSCA Inventory and DCSA Inventory Gantt. DSCA Inventory is an interface to manage assets and life-cycle events. DSCA Inventory Gantt provides a couple of different Gantt-type views of the End of Life dates of the assets. The web parts can be placed on any page within the SharePoint site.
 
 ## Provisioned SharePoint List
 
 A SharePoint list named **FSInventory** is provisioned as part of this solution. Ensure the list is properly set up for the solution to function as expected. dsca-inventory
 
 [picture of the solution in action, if possible]
+
+## Node.js Version
+
+This solution uses **Node.js v18.19.0**. Ensure you have this version installed before proceeding.
 
 ## Used SharePoint Framework Version
 

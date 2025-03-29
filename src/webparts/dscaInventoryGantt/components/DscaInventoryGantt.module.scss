@@ -1,0 +1,264 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.dscaInventoryGantt {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #ffffff;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  min-height: 300px;
+
+  .header {
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #323130;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  .backLinkContainer {
+    margin-bottom: 16px;
+  }
+
+  .backLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f3f2f1;
+    color: #323130;
+    border: 1px solid #c8c6c4;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #edebe9;
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #0078d4;
+      box-shadow: 0 0 0 1px #0078d4;
+    }
+  }
+
+  .ganttContainer {
+    border: 1px solid #edebe9;
+    border-radius: 2px;
+    margin-bottom: 20px;
+
+    :global {
+      .gantt-container {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        .calendar-header {
+          background-color: #f3f2f1;
+        }
+
+        .gantt-table-header {
+          background-color: #f3f2f1;
+        }
+      }
+    }
+  }
+
+  .loading {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #605e5c;
+  }
+
+  .error {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fed9cc;
+    color: #d83b01;
+    border-radius: 2px;
+    font-size: 14px;
+  }
+
+  .noData {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #605e5c;
+    font-style: italic;
+  }
+
+  .legend {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f8;
+    border-radius: 2px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 10px 0;
+      color: #323130;
+    }
+
+    .legendItems {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .legendItem {
+      display: flex;
+      align-items: center;
+
+      .legendColor {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+        border-radius: 3px;
+      }
+
+      .pastDue {
+        background-color: #d13438;
+      }
+
+      .lessThan3Months {
+        background-color: #f1707b;
+      }
+
+      .lessThan6Months {
+        background-color: #ff8c00;
+      }
+
+      .lessThan1Year {
+        background-color: #ffd700;
+      }
+
+      .moreThan1Year {
+        background-color: #107c10;
+      }
+    }
+  }
+
+  .viewSelector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    max-width: 900px;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #323130;
+      margin: 0 0 15px 0;
+      text-align: center;
+    }
+
+    .description {
+      font-size: 16px;
+      color: #605e5c;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .buttonContainer {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .viewButton {
+      display: flex;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid #edebe9;
+      border-radius: 4px;
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 400px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      text-align: left;
+      box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+
+      &:hover {
+        background-color: #f3f2f1;
+        border-color: #c8c6c4;
+        transform: translateY(-2px);
+        box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #0078d4;
+        box-shadow: 0 0 0 1px #0078d4;
+      }
+
+      .buttonIcon {
+        font-size: 28px;
+        margin-right: 20px;
+        min-width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .buttonContent {
+        flex-grow: 1;
+
+        h3 {
+          margin: 0 0 8px 0;
+          font-size: 18px;
+          font-weight: 600;
+          color: #323130;
+        }
+
+        p {
+          margin: 0;
+          font-size: 14px;
+          color: #605e5c;
+        }
+      }
+    }
+  }
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+    background-color: transparent;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}

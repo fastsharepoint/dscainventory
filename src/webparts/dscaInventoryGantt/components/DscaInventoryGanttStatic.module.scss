@@ -1,0 +1,222 @@
+// DscaInventoryGanttStatic.module.scss
+.dscaInventoryGanttStatic {
+  padding: 20px;
+  background-color: #ffffff;
+  
+  .backLinkContainer {
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .backLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f3f2f1;
+    color: #323130;
+    border: 1px solid #c8c6c4;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    
+    &:hover {
+      background-color: #edebe9;
+      text-decoration: none;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: #0078d4;
+      box-shadow: 0 0 0 1px #0078d4;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #323130;
+      margin: 0;
+    }
+    
+    .filterContainer {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      
+      .filterLabel {
+        margin-right: 8px;
+        font-weight: 600;
+        color: #323130;
+      }
+      
+      .yearFilter {
+        padding: 6px 10px;
+        border: 1px solid #8a8886;
+        border-radius: 2px;
+        font-size: 14px;
+        min-width: 100px;
+        
+        &:focus {
+          outline: none;
+          border-color: #0078d4;
+          box-shadow: 0 0 0 1px #0078d4;
+        }
+      }
+    }
+  }
+
+  .headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .loading {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #605e5c;
+  }
+  
+  .error {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fed9cc;
+    color: #d83b01;
+    border-radius: 2px;
+    font-size: 14px;
+  }
+  
+  .noData {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #605e5c;
+    font-style: italic;
+  }
+  
+  .tableContainer {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    
+    .eolTable {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      table-layout: fixed;
+      
+      th, td {
+        border: 1px solid #edebe9;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+      }
+      
+      th {
+        background-color: #f3f2f1;
+        font-weight: 600;
+        color: #323130;
+        position: sticky;
+        top: 0;
+      }
+      
+      .assetColumn {
+        text-align: left;
+        width: 240px;
+        min-width: 240px;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background-color: #f3f2f1;
+      }
+      
+      .monthColumn {
+        min-width: 100px;
+      }
+      
+      .assetCell {
+        text-align: left;
+        position: sticky;
+        left: 0;
+        background-color: #ffffff;
+        font-weight: 500;
+      }
+      
+      .monthCell {
+        color: transparent;
+        position: relative;
+      }
+      
+      .eolCell {
+        background-color: #f1c0c0;
+        color: #d13438;
+        font-weight: 700;
+        position: relative;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border: 2px solid #d13438;
+          pointer-events: none;
+        }
+      }
+      
+      tr {
+        &:hover {
+          background-color: #f3f2f1;
+          
+          .assetCell {
+            background-color: #f3f2f1;
+          }
+        }
+      }
+    }
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #edebe9;
+    
+    .legend {
+      display: flex;
+      
+      .legendItem {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        
+        .eolIndicator {
+          width: 16px;
+          height: 16px;
+          background-color: #f1c0c0;
+          border: 1px solid #d13438;
+          margin-right: 6px;
+        }
+      }
+    }
+    
+    .totalAssets {
+      font-weight: 600;
+      color: #323130;
+    }
+  }
+}

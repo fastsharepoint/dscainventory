@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/dscaInventoryView/DscaInventoryViewWebPart.manifest.json"
         }
       ]
+    },
+    "dsca-inventory-gantt-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dscaInventoryGantt/DscaInventoryGanttWebPart.js",
+          "manifest": "./src/webparts/dscaInventoryGantt/DscaInventoryGanttWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "DscaInventoryViewWebPartStrings": "lib/webparts/dscaInventoryView/loc/{locale}.js"
+    "DscaInventoryViewWebPartStrings": "lib/webparts/dscaInventoryView/loc/{locale}.js",
+    "DscaInventoryGanttWebPartStrings": "lib/webparts/dscaInventoryGantt/loc/{locale}.js"
   }
 }
