@@ -3,7 +3,7 @@
   "solution": {
     "name": "dsca-inventory-client-side-solution",
     "id": "8412b0f3-52f9-4f4e-b61e-4e760734606e",
-    "version": "2.0.0.0",
+    "version": "2.0.0.5",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

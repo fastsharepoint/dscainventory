@@ -93,6 +93,7 @@ const DscaInventoryGanttControl: React.FC<IDscaInventoryGanttControlProps> = (pr
         const startDate = new Date(endDate.getTime());
         startDate.setMonth(startDate.getMonth() - 1);
         
+        console.log(getColorByTimeRemaining(endDate));
         // Create the task
         return {
           id: `asset-${item.Id}`,
@@ -149,7 +150,7 @@ const DscaInventoryGanttControl: React.FC<IDscaInventoryGanttControlProps> = (pr
 
   // Custom header for the Gantt chart to show months/years
   const columnWidth = 60;
-  const ganttHeight = 500;
+  const ganttHeight = 300;
 
   return (
     <div className={`${styles.dscaInventoryGantt}`}>

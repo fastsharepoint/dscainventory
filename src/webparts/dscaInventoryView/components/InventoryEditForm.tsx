@@ -5,14 +5,14 @@ import type { IAsset } from '../types/IInventory';
 import styles from './InventoryEditForm.module.scss';
 
 interface IInventoryEditFormProps {
-  assetId?: string;
+  id?: string;
   onSave: (asset: IAsset) => void;
   onCancel: () => void;
   inventoryData: { assets: IAsset[] }; // Pass mock data as prop for testing
 }
 
-const InventoryEditForm: React.FC<IInventoryEditFormProps> = ({ assetId, onSave, onCancel, inventoryData }) => {
-  const [isEditing, setIsEditing] = useState<boolean>(!!assetId);
+const InventoryEditForm: React.FC<IInventoryEditFormProps> = ({ id, onSave, onCancel, inventoryData }) => {
+  const [isEditing, setIsEditing] = useState<boolean>(!!id);
   const [asset, setAsset] = useState<IAsset>({
     id: '0', // Default 0 ID for new asset
     asset: {
@@ -38,20 +38,20 @@ const InventoryEditForm: React.FC<IInventoryEditFormProps> = ({ assetId, onSave,
   const [formError, setFormError] = useState<string>('');
   
   useEffect(() => { 
-    setIsEditing(!!assetId); // Update editing state based on assetId prop
+    setIsEditing(!!id); // Update editing state based on assetId prop
   }, []); // Empty effect to avoid warnings 
 
   // Load existing asset data if editing
   useEffect(() => {
-    if (assetId) {
-      const existingAsset = inventoryData.assets.filter(a => a.asset.assetId === assetId)[0];
+    if (id) {
+      const existingAsset = inventoryData.assets.filter(a => a.id === id)[0];
       if (existingAsset) {
         setAsset(existingAsset);
       } else {
         setFormError('Asset not found');
       }
     }
-  }, [assetId]);
+  }, [id]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -180,7 +180,7 @@ const InventoryEditForm: React.FC<IInventoryEditFormProps> = ({ assetId, onSave,
 
       let assetIndex = -1;
       for (let i = 0; i < inventoryData.assets.length; i++) {
-        if (inventoryData.assets[i].asset.assetId === assetId) {
+        if (inventoryData.assets[i].id === id) {
           assetIndex = i;
           break; // Exit the loop once we find the match
         }

@@ -122,21 +122,32 @@ const DscaInventoryView: React.FC<IDscaInventoryViewProps> = (props) => {
       }
     }
   
-    if (eol?.date) {
+    if (eol?.notes) {
       // Convert the EOL date to the required format
-      const eolDate = new Date(eol.date);
+
+      // Parse the date from the notes field
+      const dateRegex = /\b\d{1,2}\/\d{1,2}\/\d{4}\b/;
+      const match = eol.notes.match(dateRegex);
+      if (match) {
+        const extractedDate = match[0];
+        console.log("Extracted Date:", extractedDate);
+
+        const eolDate = new Date(extractedDate);
       
-      // Format as YYYY-MM-DDThh:mm:ss
-      // Replace padStart with manual string formatting for month and day
-      const year = eolDate.getFullYear();
-      const monthNum = eolDate.getMonth() + 1;
-      const dayNum = eolDate.getDate();
+        // Format as YYYY-MM-DDThh:mm:ss
+        // Replace padStart with manual string formatting for month and day
+        const year = eolDate.getFullYear();
+        const monthNum = eolDate.getMonth() + 1;
+        const dayNum = eolDate.getDate();
 
-      // Manual zero-padding using conditional logic
-      const month = monthNum < 10 ? '0' + monthNum : '' + monthNum;
-      const day = dayNum < 10 ? '0' + dayNum : '' + dayNum;
+        // Manual zero-padding using conditional logic
+        const month = monthNum < 10 ? '0' + monthNum : '' + monthNum;
+        const day = dayNum < 10 ? '0' + dayNum : '' + dayNum;
 
-      return `${year}-${month}-${day}T12:00:00`;
+        return `${year}-${month}-${day}T12:00:00`;
+
+      }
+      
     }
     
     return null;
@@ -149,6 +160,8 @@ const DscaInventoryView: React.FC<IDscaInventoryViewProps> = (props) => {
 
             // Use SPHttpClient to post the new item
     
+            console.log("updatedAsset.id: " + updatedAsset.id);
+
             if (updatedAsset.id === '0') { 
               props.context.spHttpClient.post(
                 url,
@@ -241,10 +254,10 @@ const DscaInventoryView: React.FC<IDscaInventoryViewProps> = (props) => {
                   // For a MERGE operation, no content is returned
                   //return { success: true, finalAsset };
 
-                  setInventory((prevState) => ({
-                    ...prevState,
-                    assets: [...prevState.assets, updatedAsset] // Add the new asset to the inventory
-                  }));
+                  //setInventory((prevState) => ({
+                  //  ...prevState,
+                  //  assets: [...prevState.assets, updatedAsset] // Add the new asset to the inventory
+                  //}));
                   setSelectedAsset(updatedAsset); // Set the selected asset to the newly created one
                   setIsEditMode(false);
                 } else {
@@ -414,7 +427,7 @@ const DscaInventoryView: React.FC<IDscaInventoryViewProps> = (props) => {
               {isEditMode ? (
                 // Edit Form
                 <InventoryEditForm 
-                  assetId={selectedAsset?.asset.assetId || ''}
+                  id={selectedAsset?.id || ''}
                   onSave={handleSaveAsset}
                   onCancel={handleCancelEdit}
                   inventoryData={inventoryData}
